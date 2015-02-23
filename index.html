@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Quran Searcher</title>
+        <link href='http://fonts.googleapis.com/css?family=Cardo' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+        <link href='http://fonts.googleapis.com/css?family=Lato' rel='stylesheet' type='text/css'>
+        <meta name="viewport" content="width=device-width"/>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="style.css">
+    </head>
+    <body>
+        <div class="header"><p id="main-text">Quran Search</p>  
+        </div>
+        
+        <div id="sura-button">Search By Sura and Ayat Number</div>
+        <div id="key-button">Search by Keyword</div>
+    
+    
+        <div class="number-container">
+            <p class="type">Quran Search By Ayat</p>
+            <input type="text" class="inp" id="sura" placeholder="Sura">
+            <input type="text" class="inp" id="aya" placeholder="Ayat">
+            <input type="submit" class="sub" id="num-sub" value="Submit!">
+            <div class="num-text" id="num-text"></div>
+            
+        </div>
+        
+        <div class="key-container">
+            <p class="type">Quran Search By Keyword</p>
+            <input type="text" class="inp" id="key" placeholder="Keyword">
+            <input type="submit" class="sub" id="key-sub" value="Submit!">
+            <div class="key-text" id="key-text"></div>
+            
+        </div>
+          
+        <script src="jquery.js"></script>
+        <script src="backstretch.js"></script>
+        <script src="index.js"></script>
+    </body>
+
+</html>
