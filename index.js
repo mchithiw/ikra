@@ -61,7 +61,7 @@ $(function() {
             var ctr = 0;
             k = $("#sura").val();
             m = $("#aya").val();
-            sub = k + "|" + m + "|";
+            sub = " " + k + "|" + m + "|";
             var check = false;
             
         if ((k != "") && (m != ""))
