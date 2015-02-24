@@ -10,11 +10,12 @@
         <link rel="stylesheet" href="main.css">
     </head>
     <body>
-        <div class="header"><p id="main-text">Ikrah - &#1537</p>  
+        <div class="header"><p id="main-text" lang="ar" dir="rtl" >Iqra - اقرأ </p>  
         </div>
         
-        <div id="sura-button">Sura</div>
-        <div id="key-button">Keyword</div>
+        <div class="button" id="sura-button">Ayat</div>
+        <div class="button" id="key-button">Keyword</div>
+        <div class="button" id="full-button">Sura</div>
     
     
         <div class="number-container">
@@ -23,6 +24,14 @@
             <input type="text" class="inp" id="aya" placeholder="Ayat">
             <input type="submit" class="sub" id="num-sub" value="Submit!">
             <div class="num-text" id="num-text"></div>
+            
+        </div>
+        
+        <div class="sura-container">
+            <p class="type">Complete Sura</p>
+            <input type="text" class="inp" id="sura-inp" placeholder="Sura Number">
+            <input type="submit" class="sub" id="sura-sub" value="Submit!">
+            <div class="sura-text" id="sura-text"></div>
             
         </div>
         

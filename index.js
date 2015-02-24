@@ -3,6 +3,7 @@ $(function() {
     //initial settings
     $(".inp").val("");
     $(".number-container").hide();
+    $(".sura-container").hide();
     
     //set resizeable background
     $.backstretch("Blur/7.jpg");
@@ -13,11 +14,41 @@ $(function() {
     var m;
     var sub;
     var keyword;
+    var sura;
+    var suraStr;
+    var chk;
     
     //read Quran from file into array
     $.get('quran.txt', function(data) {
         quranText = data.split('\n');  
         console.log(quranText[0]);
+    });
+       
+    $("#sura-sub").click(function () {
+        chk = false;
+        
+        $(".sura-text").html("Please enter a valid sura (1-114). Thanks!");
+        
+        sura = $("#sura-inp").val();
+        
+        if (sura != "") {
+            chk = true;
+        } 
+        suraStr = " " + sura + "|";
+        var part;
+        var ctr = 0;
+        $.each(quranText, function( key, value) {
+            if (chk && value.indexOf(suraStr) >= 0) {
+                if (ctr === 0) {
+                    $(".sura-text").html("");
+                    ctr++;
+                }
+                part = value.slice(value.indexOf("|") + 1, value.length);
+                $(".sura-text").append(part);
+                $(".sura-text").append('<br/>' + '<br/>');
+            }
+        });
+        
     });
     
     console.log(quranText[0]);
@@ -77,7 +108,7 @@ $(function() {
                 $(".num-text").html("");
                 $(".num-text").append("Sura: " + k + " Ayat: " + m + "     " + tempStr);
                 $(".num-text").append('<br/>' + '<br/>');
-                return false;
+                //return false;
             }
     });
     });
@@ -85,34 +116,47 @@ $(function() {
 };
     
     //initialize without button
-    showQuran();
+    //showQuran();
         
     
     //buttons to change between features
     $("#sura-button").click(function() {
-        $(".key-container").hide();
+        $(".key-container, .sura-container").hide();
         $(".number-container").show();
         showQuran();
         $("#sura-button").css("border-bottom", "4px solid maroon");
         $("#sura-button").css("cursor", "default");
         $("#sura-button").css("opacity", ".50");
         
-        $("#key-button").css("border-bottom", "none");
-        $("#key-button").css("cursor", "pointer");
-        $("#key-button").css("opacity", "1.00");
+        $("#key-button, #full-button").css("border-bottom", "none");
+        $("#key-button, #full-button").css("cursor", "pointer");
+        $("#key-button, #full-button").css("opacity", "1.00");
     });
     
     $("#key-button").click(function() {
-        $(".number-container").hide();
+        $(".number-container, .sura-container").hide();
         $(".key-container").show();
         showQuran();
         $("#key-button").css("border-bottom", "4px solid maroon");
         $("#key-button").css("cursor", "default");
         $("#key-button").css("opacity", ".50");
         
-        $("#sura-button").css("border-bottom", "none");
-        $("#sura-button").css("cursor", "pointer");
-        $("#sura-button").css("opacity", "1.00");
+        $("#sura-button, #full-button").css("border-bottom", "none");
+        $("#sura-button, #full-button").css("cursor", "pointer");
+        $("#sura-button, #full-button").css("opacity", "1.00");
+    });
+    
+    $("#full-button").click(function() {
+        $(".key-container, .number-container").hide();
+        $(".sura-container").show();
+        showQuran();
+        $("#full-button").css("border-bottom", "4px solid maroon");
+        $("#full-button").css("cursor", "default");
+        $("#full-button").css("opacity", ".50");
+        
+        $("#key-button, #sura-button").css("border-bottom", "none");
+        $("#key-button, #sura-button").css("cursor", "pointer");
+        $("#key-button, #sura-button").css("opacity", "1.00");
     });
 
 });
