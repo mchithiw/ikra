@@ -95,7 +95,7 @@ $(function() {
         showQuran();
         $("#sura-button").css("border-bottom", "4px solid maroon");
         $("#sura-button").css("cursor", "default");
-        $("#sura-button").css("opacity", ".40");
+        $("#sura-button").css("opacity", ".50");
         
         $("#key-button").css("border-bottom", "none");
         $("#key-button").css("cursor", "pointer");
@@ -108,7 +108,7 @@ $(function() {
         showQuran();
         $("#key-button").css("border-bottom", "4px solid maroon");
         $("#key-button").css("cursor", "default");
-        $("#key-button").css("opacity", ".40");
+        $("#key-button").css("opacity", ".50");
         
         $("#sura-button").css("border-bottom", "none");
         $("#sura-button").css("cursor", "pointer");
