@@ -20,21 +20,21 @@ body{
     position: fixed;
     top: 0;
     left: 0;
-    height: 15%;
+    height: 12%;
     width: 100%;
     background-color: #3c0f0f;
     opacity: .75;
     color: white;
     text-align: center;
     font-size: 10vmin;
-    line-height: 15vh;
+    line-height: 12vh;
 }
 
 .number-container, .key-container, .sura-container{
     position: absolute;
     width: 80%;
-    height: 63%;
-    top: 30%;
+    height: 62%;
+    top: 25%;
     left: 10%;
     border: .5vmin solid #3c0f0f;
     text-align: center;
@@ -78,14 +78,14 @@ body{
     position: absolute;
     width: 33.3%;
     height: 8%;
-    top: 15%;
+    top: 12%;
     line-height: 8vh;
     text-align: center;
     color: white;
     cursor: pointer;
     font-size: 6vmin;
     background-color: #711f1f;
-    font-family: "Open Sans";
+    font-family: "Cardo";
 }
 #sura-button{
     left: 0;
@@ -94,6 +94,7 @@ body{
 #key-button{
     left: 33.3%;
     opacity: .25;
+    border-bottom: 6px solid maroon;
 }
 
 #full-button{
@@ -101,9 +102,26 @@ body{
     opacity: .6;
 }
 
+.footer{
+    position: fixed;
+    width: 100%;
+    height: 8%;
+    top: 92%;
+    text-align: center;
+    line-height: 8vh;
+    font-size: 4vmin;
+    color: white;
+    font-family: "Cardo";
+    background-color: #3c0f0f;
+    opacity: .75;
+}
 @media (min-width: 600px) {
-    .key-text, .num-text, .sura-text{
+    .key-text, .num-text, .sura-text,{
         font-size: 5vmin;
+    }
+    
+    .footer{
+        font-size: 3vmin;
     }
 }
 @media (min-width: 450px) and (min-height: 600px) {

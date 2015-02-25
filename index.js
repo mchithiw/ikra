@@ -51,7 +51,6 @@ $(function() {
         
     });
     
-    console.log(quranText[0]);
     $(".key-text").html("Note: Keywords ARE Case Sensitive.");
      //$(".num-text").html("Note: Please enter a valid Sura and Ayat Number. Thanks!"); 
     
@@ -64,6 +63,7 @@ $(function() {
                 $(".key-text").html("Note: Keywords ARE Case Sensitive.");
             
              keyword = $("#key").val();
+             console.log(keyword);
                 
                 var ctr = 0;
                 
@@ -116,7 +116,7 @@ $(function() {
 };
     
     //initialize without button
-    //showQuran();
+    showQuran();
         
     
     //buttons to change between features
@@ -124,7 +124,7 @@ $(function() {
         $(".key-container, .sura-container").hide();
         $(".number-container").show();
         showQuran();
-        $("#sura-button").css("border-bottom", "4px solid maroon");
+        $("#sura-button").css("border-bottom", "6px solid maroon");
         $("#sura-button").css("cursor", "default");
         $("#sura-button").css("opacity", ".50");
         
@@ -137,7 +137,7 @@ $(function() {
         $(".number-container, .sura-container").hide();
         $(".key-container").show();
         showQuran();
-        $("#key-button").css("border-bottom", "4px solid maroon");
+        $("#key-button").css("border-bottom", "6px solid maroon");
         $("#key-button").css("cursor", "default");
         $("#key-button").css("opacity", ".50");
         
@@ -150,7 +150,7 @@ $(function() {
         $(".key-container, .number-container").hide();
         $(".sura-container").show();
         showQuran();
-        $("#full-button").css("border-bottom", "4px solid maroon");
+        $("#full-button").css("border-bottom", "6px solid maroon");
         $("#full-button").css("cursor", "default");
         $("#full-button").css("opacity", ".50");
         
