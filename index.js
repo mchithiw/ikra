@@ -69,10 +69,11 @@ $(function() {
                 
             $.each(quranText, function(index, value) {
             
-            if ( (keyword != "") && value.indexOf(keyword) >= 0) {
-                var s = value.lastIndexOf("|") + 1;
-                var temp = value.slice(s, value.length);
-                var num = value.substr(0, s - 1);
+            var s = value.lastIndexOf("|") + 1;
+            var temp = value.slice(s, value.length);
+            var num = value.substr(0, s - 1);
+            
+            if ( (keyword != "") && temp.indexOf(keyword) >= 0) {
                 if (ctr === 0) {
                     $(".key-text").html("");
                 }
