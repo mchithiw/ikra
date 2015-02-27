@@ -10,26 +10,58 @@ $(function() {
     
     //initialize global variables
     var quranText = [];
+    var suraList = [];
     var k;
     var m;
     var sub;
     var keyword;
     var sura;
+    var suraSelected;
     var suraStr;
     var chk;
+    var selStr;
     
     //read Quran from file into array
     $.get('quran.txt', function(data) {
         quranText = data.split('\n');  
-        console.log(quranText[0]);
     });
-       
+    
+    $.get('sura.txt', function(data) {
+        suraList = data.split('\n'); 
+        //console.log(suraList[0]);
+        
+    $.each(suraList, function(key, value) {   
+     $('.suras')
+         .append($("<option></option>")
+         .attr("value",key)
+         .text(value)); 
+});
+    
+    $(".suras").prepend($("<option/>", {
+        value: "Error",
+        text: "Pick a Sura",
+        selected: "selected"
+      }));
+        
+    });
+    
+    $(".sura-text").html("Either type a Sura number or select one from the drop down menu!");
+    
+    
     $("#sura-sub").click(function () {
         chk = false;
         
         $(".sura-text").html("Please enter a valid sura (1-114). Thanks!");
+        $("#sura-type").html("Complete Sura");
         
+        suraSelected = $(".suras").val();
+        if (suraSelected != "Error") {
+            suraSelected = parseInt(suraSelected) + 1;
+        }
+        console.log(suraSelected);
         sura = $("#sura-inp").val();
+        var suraName = $(".suras option:selected").text();
+        
         
         if (sura != "") {
             chk = true;
@@ -47,6 +79,26 @@ $(function() {
                 $(".sura-text").append(part);
                 $(".sura-text").append('<br/>' + '<br/>');
             }
+            else if (chk === false && (suraSelected != "Error")) {
+                selStr = " " + suraSelected + "|";
+                console.log(selStr);
+                
+                if (value.indexOf(selStr) >= 0) {
+                    if (ctr === 0) {
+                    $(".sura-text").html("");
+                    ctr++;
+                }
+                    
+                    $("#sura-type").html(suraName);
+                   part = value.slice(value.indexOf("|") + 1, value.length);
+                $(".sura-text").append(part);
+                $(".sura-text").append('<br/>' + '<br/>'); 
+                }
+                
+                     
+            }
+            
+            
         });
         
     });
