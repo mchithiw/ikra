@@ -22,9 +22,12 @@ $(function() {
     var selStr;
     
     //read Quran from file into array
+   /* var getQuran = function() {
     $.get('quran.txt', function(data) {
         quranText = data.split('\n');  
     });
+    } */
+    
     
     $.get('sura.txt', function(data) {
         suraList = data.split('\n'); 
@@ -45,10 +48,16 @@ $(function() {
         
     });
     
-    $(".sura-text").html("Either type a Sura number or select one from the drop down menu!");
+    $(".sura-text").html("Either type a Sura number or select one from the drop down menu! Note: If you type a Sura, it will take preference over the drop down selection.");
     
     
     $("#sura-sub").click(function () {
+        
+        if (quranText.length < 1) {
+            $.get('quran.txt', function(data) {
+                quranText = data.split('\n');  
+            });
+        }
         chk = false;
         
         $(".sura-text").html("Please enter a valid sura (1-114). Thanks!");
@@ -112,6 +121,12 @@ $(function() {
             
             $("#key-sub").click(function() {
                 
+                if (quranText.length < 1) {
+                    $.get('quran.txt', function(data) {
+                        quranText = data.split('\n');  
+                     });
+                }
+                
                 $(".key-text").html("Note: Keywords ARE Case Sensitive.");
             
              keyword = $("#key").val();
@@ -130,7 +145,7 @@ $(function() {
                     $(".key-text").html("");
                 }
                 ctr++;
-                $(".key-text").append(num + " " + temp);
+                $(".key-text").append(num + ": " + temp);
                 $(".key-text").append('<br/>' + '<br/>');
                 //return false;
             }
@@ -141,6 +156,13 @@ $(function() {
 } else {
     
             $("#num-sub").click(function() {
+                
+                if (quranText.length < 1) {
+                    $.get('quran.txt', function(data) {
+                        quranText = data.split('\n');  
+                    });
+                }
+                
              $(".num-text").html("Note: Please enter a valid Sura and Ayat number. Thanks!");   
             var ctr = 0;
             k = $("#sura").val();
@@ -159,7 +181,7 @@ $(function() {
                 var tempStr;
                 tempStr = value.slice((value.indexOf(sub) + sub.length), value.length);
                 $(".num-text").html("");
-                $(".num-text").append("Sura: " + k + " Ayat: " + m + "     " + tempStr);
+                $(".num-text").append("Sura: " + k + " Ayat: " + m + ":     " + tempStr);
                 $(".num-text").append('<br/>' + '<br/>');
                 //return false;
             }

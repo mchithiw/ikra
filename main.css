@@ -4,8 +4,8 @@
 }
 
 html{
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     overflow-x: hidden;
 }
 
@@ -23,26 +23,27 @@ body{
     height: 12%;
     width: 100%;
     background-color: #3c0f0f;
-    opacity: .75;
+    opacity: 1;
     color: white;
     text-align: center;
-    font-size: 10vmin;
+    font-size: 50px;
     line-height: 12vh;
+    z-index: 10;
 }
 
 .number-container, .key-container, .sura-container{
     position: absolute;
     width: 80%;
-    height: 62%;
+    height: auto;
     top: 25%;
     left: 10%;
     border: .5vmin solid #3c0f0f;
     text-align: center;
-    font-size: 6vmin;
+    font-size: 32px;
     color: white;
     font-family: "Cardo", serif;
     overflow-x: hidden;
-    overflow-y: auto;
+    
 }
 
 .type{
@@ -50,20 +51,20 @@ body{
 }
 .inp, .sub, .suras{
     position: relative;
-    display: block;
+    display: inline-block;
     top: 0%;
     width: 27%;
-    height: 13%;
+    height: 15%;
     padding: 0;
     margin: 0;
-    display: inline-block;
     font-family: "Lato";
     color: #17245c;
-    font-size: 4vmin;
+    font-size: 22px;
 }
 
 #sura-inp, #sura-sub{
     width: 24%;
+    height: 15%;
 }
 
 .suras{
@@ -71,14 +72,15 @@ body{
 }
 
 .key-text, .num-text, .sura-text{
-    position: absolute;
+    position: relative;
     width: 60%;
-    height: 40%;
-    top: 53%;
+    height: auto;
+    top: 50%;
     left: 20%;
+    margin: 7% 0;
     color: white;
     z-index: 1;
-    font-size: 5.5vmin;
+    font-size: 22px;
     font-family: "Lato";
 }
 
@@ -91,10 +93,11 @@ body{
     text-align: center;
     color: white;
     cursor: pointer;
-    font-size: 6vmin;
+    font-size: 26px;
     background-color: #711f1f;
     font-family: "Cardo";
 }
+
 #sura-button{
     left: 0;
 }
@@ -111,7 +114,7 @@ body{
 }
 
 .footer{
-    position: fixed;
+    position: relative;
     width: 100%;
     height: 8%;
     top: 92%;
@@ -123,17 +126,43 @@ body{
     background-color: #3c0f0f;
     opacity: .75;
 }
-@media (min-width: 600px) {
+
+@media (max-width: 600px) {
+    
+    .header{
+        font-size: 30px;
+    }
+    
     .key-text, .num-text, .sura-text,{
-        font-size: 5vmin;
+        font-size: 16px;
+        width: 70%;
+        left: 15%;
     }
     
     .footer{
         font-size: 3vmin;
     }
-}
-@media (min-width: 450px) and (min-height: 600px) {
-    .key-text, .num-text, .sura-text{
-        font-size: 3.5vmin;
+    
+    .inp, .sub, .suras{
+        display: block;
+        width: 70%;
+        height: 25px;
+        margin: 4% auto;
+        font-size: 18px;
+    }
+    
+    #sura-inp, #sura-sub{
+        display: block;
+        width: 70%;
+        height: 25px;
+        margin: 4% auto;
+    }
+    
+    .key-container, .sura-container, .number-container{
+        font-size: 26px;
+    }
+    
+    .button{
+        font-size: 20px;
     }
 }
