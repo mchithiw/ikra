@@ -22,11 +22,13 @@ $(function() {
     var selStr;
     
     //read Quran from file into array
-   /* var getQuran = function() {
+    var getQuran = function() {
     $.get('quran.txt', function(data) {
         quranText = data.split('\n');  
     });
-    } */
+    } 
+    
+    setTimeout(getQuran, 100);
     
     
     $.get('sura.txt', function(data) {
@@ -53,11 +55,12 @@ $(function() {
     
     $("#sura-sub").click(function () {
         
-        if (quranText.length < 1) {
+        /*if (quranText.length < 1) {
             $.get('quran.txt', function(data) {
                 quranText = data.split('\n');  
             });
-        }
+        }*/
+        
         chk = false;
         
         $(".sura-text").html("Please enter a valid sura (1-114). Thanks!");
@@ -67,7 +70,6 @@ $(function() {
         if (suraSelected != "Error") {
             suraSelected = parseInt(suraSelected) + 1;
         }
-        console.log(suraSelected);
         sura = $("#sura-inp").val();
         var suraName = $(".suras option:selected").text();
         
@@ -82,6 +84,7 @@ $(function() {
             if (chk && value.indexOf(suraStr) >= 0) {
                 if (ctr === 0) {
                     $(".sura-text").html("");
+                    $("#sura-type").html("Sura Number " + sura);
                     ctr++;
                 }
                 part = value.slice(value.indexOf("|") + 1, value.length);
@@ -90,15 +93,13 @@ $(function() {
             }
             else if (chk === false && (suraSelected != "Error")) {
                 selStr = " " + suraSelected + "|";
-                console.log(selStr);
                 
                 if (value.indexOf(selStr) >= 0) {
                     if (ctr === 0) {
                     $(".sura-text").html("");
+                    $("#sura-type").html(suraName);
                     ctr++;
                 }
-                    
-                    $("#sura-type").html(suraName);
                    part = value.slice(value.indexOf("|") + 1, value.length);
                 $(".sura-text").append(part);
                 $(".sura-text").append('<br/>' + '<br/>'); 
@@ -121,16 +122,15 @@ $(function() {
             
             $("#key-sub").click(function() {
                 
-                if (quranText.length < 1) {
+               /* if (quranText.length < 1) {
                     $.get('quran.txt', function(data) {
                         quranText = data.split('\n');  
                      });
-                }
+                } */
                 
                 $(".key-text").html("Note: Keywords ARE Case Sensitive.");
             
              keyword = $("#key").val();
-             console.log(keyword);
                 
                 var ctr = 0;
                 
@@ -143,6 +143,7 @@ $(function() {
             if ( (keyword != "") && temp.indexOf(keyword) >= 0) {
                 if (ctr === 0) {
                     $(".key-text").html("");
+                    $("#key-type").html(keyword);
                 }
                 ctr++;
                 $(".key-text").append(num + ": " + temp);
@@ -157,11 +158,11 @@ $(function() {
     
             $("#num-sub").click(function() {
                 
-                if (quranText.length < 1) {
+               /* if (quranText.length < 1) {
                     $.get('quran.txt', function(data) {
                         quranText = data.split('\n');  
                     });
-                }
+                } */
                 
              $(".num-text").html("Note: Please enter a valid Sura and Ayat number. Thanks!");   
             var ctr = 0;
@@ -180,6 +181,7 @@ $(function() {
             if (check && value.indexOf(sub) >= 0) {
                 var tempStr;
                 tempStr = value.slice((value.indexOf(sub) + sub.length), value.length);
+                $("#num-type").html("Sura " + k + ", Ayat " + m);
                 $(".num-text").html("");
                 $(".num-text").append("Sura: " + k + " Ayat: " + m + ":     " + tempStr);
                 $(".num-text").append('<br/>' + '<br/>');
